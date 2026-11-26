@@ -1,0 +1,872 @@
+/* =========================
+   GLOBAL
+========================= */
+
+:root {
+    --red: #ed2525;
+    --black: #080808;
+    --white: #ffffff;
+    --gray: #aaaaaa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+button {
+    font: inherit;
+}
+
+.section {
+    padding: 110px 8%;
+}
+
+
+/* =========================
+   PRELOADER
+========================= */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    background: #050505;
+    display: grid;
+    place-items: center;
+    z-index: 9999;
+    transition: opacity .5s ease, visibility .5s ease;
+}
+
+.preloader h2 {
+    font-size: 32px;
+    letter-spacing: 4px;
+}
+
+.preloader span {
+    color: var(--red);
+}
+
+.preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 85px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(0,0,0,.45);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.logo,
+.footer-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.logo span,
+.footer-logo span {
+    color: var(--red);
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ddd;
+    transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--red);
+}
+
+.nav-subscribe {
+    background: var(--red);
+    padding: 13px 23px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.nav-subscribe:hover {
+    background: white;
+    color: black;
+}
+
+.menu-btn {
+    display: none;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    display: inline-block;
+    padding: 16px 25px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    border: 1px solid white;
+    color: white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 130px 8% 100px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 80% 45%, #351010, transparent 38%),
+        #080808;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.96) 0%,
+        rgba(0,0,0,.82) 45%,
+        rgba(0,0,0,.25) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 650px;
+}
+
+.hero-label,
+.small-heading {
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(45px, 6vw, 80px);
+    font-weight: 800;
+    line-height: 1.12;
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.hero h3 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+
+.hero-description {
+    color: #bbb;
+    line-height: 1.9;
+    max-width: 480px;
+    font-size: 14px;
+    margin: 20px 0 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.hero-portrait {
+    position: absolute;
+    right: 7%;
+    bottom: 0;
+    height: 85%;
+    width: 40%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hero-portrait img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 0 30px rgba(0,0,0,.8));
+}
+
+.hero-bottom {
+    position: absolute;
+    bottom: 28px;
+    left: 8%;
+    display: flex;
+    gap: 30px;
+    z-index: 3;
+    color: #aaa;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   SECTION TITLES
+========================= */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 65px;
+}
+
+.section-title p {
+    color: var(--red);
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.section-title h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(35px, 5vw, 60px);
+    font-weight: 800;
+}
+
+.section-title h2 span {
+    color: var(--red);
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    background: #0b0b0b;
+}
+
+.about-container {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    align-items: center;
+    gap: 85px;
+}
+
+.about-image {
+    height: 550px;
+    overflow: hidden;
+    border: 1px solid rgba(237,37,37,.4);
+}
+
+.about-image img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    transition: .6s;
+}
+
+.about-image:hover img {
+    transform: scale(1.04);
+}
+
+.about-content h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(35px, 4vw, 55px);
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.about-content h2 span {
+    color: var(--red);
+}
+
+.about-content p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+.about-content .btn {
+    margin-top: 15px;
+}
+
+
+/* =========================
+   FITNESS
+========================= */
+
+.fitness {
+    min-height: 650px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #111;
+}
+
+.fitness-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fitness-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.15)
+    );
+}
+
+.fitness-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.fitness-content h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.fitness-content h2 span {
+    color: var(--red);
+}
+
+.fitness-content > p:not(.small-heading) {
+    color: #bbb;
+    line-height: 1.9;
+    max-width: 450px;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   VLOGS
+========================= */
+
+.vlogs {
+    background: #090909;
+}
+
+.vlog-container {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.vlog-image {
+    height: 550px;
+    overflow: hidden;
+}
+
+.vlog-image img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    transition: .6s;
+}
+
+.vlog-image:hover img {
+    transform: scale(1.04);
+}
+
+.vlog-text h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(35px, 4vw, 55px);
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.vlog-text h2 span {
+    color: var(--red);
+}
+
+.vlog-text > p:not(.small-heading) {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   VIDEOS
+========================= */
+
+.videos {
+    background: #101010;
+}
+
+.video-container {
+    max-width: 950px;
+    margin: auto;
+    background: #181818;
+    border: 1px solid #292929;
+}
+
+.video-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+.video-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-details {
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.video-details h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.video-details p {
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.more-videos {
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/* =========================
+   CREATOR SECTION
+========================= */
+
+.creator-section {
+    min-height: 650px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 100px 8%;
+    overflow: hidden;
+}
+
+.creator-image {
+    position: absolute;
+    inset: 0;
+}
+
+.creator-image img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+.creator-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.72),
+        rgba(0,0,0,.25)
+    );
+}
+
+.creator-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.creator-content h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1.1;
+}
+
+.creator-content h2 span {
+    color: var(--red);
+}
+
+.creator-content > p:not(.small-heading) {
+    color: #ccc;
+    line-height: 1.9;
+    margin: 25px 0 30px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #050505;
+    text-align: center;
+    padding: 70px 8% 25px;
+    border-top: 1px solid #222;
+}
+
+.footer-logo {
+    display: inline-block;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.footer > p {
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 35px 0;
+}
+
+.footer-links a {
+    color: #aaa;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.footer-links a:hover {
+    color: var(--red);
+}
+
+.youtube-link {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.footer .copyright {
+    border-top: 1px solid #222;
+    padding-top: 25px;
+    margin-top: 40px;
+    font-size: 11px;
+    letter-spacing: 0;
+}
+
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .section {
+        padding: 85px 5%;
+    }
+
+    .about-container,
+    .vlog-container {
+        gap: 40px;
+    }
+
+    .hero-portrait {
+        right: 2%;
+        width: 43%;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .navbar {
+        height: 75px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-subscribe {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        padding: 30px;
+        background: #080808;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        border-bottom: 1px solid #333;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero {
+        min-height: 900px;
+        padding: 140px 6% 0;
+        align-items: flex-start;
+    }
+
+    .hero-content {
+        text-align: center;
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(38px, 9vw, 60px);
+    }
+
+    .hero h3 {
+        font-size: 10px;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-portrait {
+        width: 100%;
+        height: 48%;
+        right: 0;
+        bottom: 0;
+    }
+
+    .hero-overlay {
+        background: linear-gradient(
+            180deg,
+            rgba(0,0,0,.97),
+            rgba(0,0,0,.8) 50%,
+            rgba(0,0,0,.15)
+        );
+    }
+
+    .hero-bottom {
+        display: none;
+    }
+
+    .about-container,
+    .vlog-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: 470px;
+        max-width: 450px;
+        margin: auto;
+    }
+
+    .about-content,
+    .vlog-text {
+        text-align: center;
+    }
+
+    .fitness {
+        min-height: 550px;
+    }
+
+    .fitness-content {
+        text-align: center;
+    }
+
+    .fitness-content > p:not(.small-heading) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .vlog-image {
+        height: 430px;
+    }
+
+    .creator-section {
+        min-height: 600px;
+        text-align: center;
+    }
+
+    .creator-content {
+        margin: auto;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .hero {
+        min-height: 820px;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .hero-label {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 14px 17px;
+        font-size: 9px;
+    }
+
+    .about-image {
+        height: 390px;
+    }
+
+    .vlog-image {
+        height: 350px;
+    }
+
+    .fitness {
+        min-height: 470px;
+    }
+
+    .footer-links {
+        gap: 20px;
+    }
+
+}
